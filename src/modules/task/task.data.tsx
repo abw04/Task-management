@@ -3,9 +3,9 @@ import type { Task } from "./task.type";
 export const TaskData: Task[] = [
     {
         id: 1,
-        title: "exercise",
+        title: "Exercise",
         description: "jogging",
-        isCompleted: true
+        isCompleted: false
     },
     {
         id: 2,
