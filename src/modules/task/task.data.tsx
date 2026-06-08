@@ -14,7 +14,7 @@ export const tasksData: Task[] = [
     isCompleted: true,
   },
   {
-    id: 1,
+    id: 3,
     title: "Upskilling",
     description: "Bearmentor tasks",
     isCompleted: true,
