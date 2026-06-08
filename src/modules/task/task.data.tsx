@@ -1,6 +1,6 @@
 import type { Task } from "./task.type";
 
-export const TaskData: Task[] = [
+export const tasksData: Task[] = [
   {
     id: 1,
     title: "Exercise",

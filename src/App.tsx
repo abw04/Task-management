@@ -1,5 +1,5 @@
-import { TaskCard } from "./modules/components/task-card";
-import { TaskData } from "./modules/task/task.data";
+import { TaskCard } from "./modules/task/components/task-card";
+import { tasksData } from "./modules/task/task.data";
 
 export default function App() {
   return (
@@ -13,21 +13,21 @@ export default function App() {
           <input
             type="text"
             placeholder="Task Name"
-            className=" mx-2 bg-gray-100"
+            className="mx-2 bg-gray-100"
           />
         </form>
         <form className="flex">
           <input
             type="text"
             placeholder="Task Description"
-            className=" m-2 bg-gray-100"
+            className="m-2 bg-gray-100"
           />
         </form>
         <button type="submit" className="m-2 p-1 bg-gray-200 pointer">
           Submit
         </button>
       </div>
-      {TaskData.map((task) => {
+      {tasksData.map((task) => {
         return <TaskCard key={task.id} task={task} />;
       })}
     </div>
