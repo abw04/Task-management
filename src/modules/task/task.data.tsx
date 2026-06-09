@@ -4,13 +4,13 @@ export const tasksData: Task[] = [
   {
     id: 1,
     title: "Exercise",
-    description: "jogging",
+    description: "Jogging",
     isCompleted: false,
   },
   {
     id: 2,
     title: "Working",
-    description: "office time",
+    description: "Office time",
     isCompleted: true,
   },
   {
