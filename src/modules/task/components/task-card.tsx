@@ -7,7 +7,7 @@ export function TaskCard({ task }: { task: Task }) {
     <div className="p-2 m-2">
       <Card size="sm">
         <CardHeader>
-          <CardTitle>
+          <CardTitle className="flex gap-2">
             <TaskCheck task={task} />
             {task.title}
           </CardTitle>
