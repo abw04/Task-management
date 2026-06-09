@@ -11,9 +11,9 @@ export function TaskCard({ task }: { task: Task }) {
             <TaskCheck task={task} />
             {task.title}
           </CardTitle>
-        <CardDescription className="mx-4">
-          <span>{task.description}</span>
-        </CardDescription>
+          <CardDescription className="mx-4">
+            <span>{task.description}</span>
+          </CardDescription>
         </CardHeader>
       </Card>
     </div>

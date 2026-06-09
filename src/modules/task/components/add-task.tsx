@@ -1,13 +1,19 @@
 import { Button } from "@/src/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/src/ui/card";
 
 export function AddTask() {
   return (
-    <div className="max-w-xl mx-auto bg-orange-300">
-      <h1 className="text-3xl mx-2 py-2 text-center font-bold">
-        Task Management
-      </h1>
-      <div className="mx-2 border">
-        <h3 className="text-xl mx-2 my-2">Add New Task</h3>
+    <Card className="m-4">
+      <CardHeader>
+        <CardTitle className="text-xl">Add New Task</CardTitle>
+      </CardHeader>
+      <CardContent>
         <form className="flex">
           <input
             type="text"
@@ -22,8 +28,10 @@ export function AddTask() {
             className="m-2 bg-gray-100"
           />
         </form>
-        <Button className="m-2">Add Task</Button>
-      </div>
-    </div>
+      </CardContent>
+      <CardAction>
+        <Button className="mx-8">Add Task</Button>
+      </CardAction>
+    </Card>
   );
 }
