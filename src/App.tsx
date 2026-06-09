@@ -1,7 +1,6 @@
 import { AddTask } from "./modules/task/components/add-task";
 import { TaskCard } from "./modules/task/components/task-card";
 import { tasksData } from "./modules/task/task.data";
-import { Button } from "./ui/button";
 
 
 export default function App() {
@@ -10,9 +9,6 @@ export default function App() {
       <div>
       <AddTask/>
       </div>
-        <div>
-          <Button className="m-2">Add Task</Button>
-        </div>
       {tasksData.map((task) => {
         return <TaskCard key={task.id} task={task} />;
       })}
