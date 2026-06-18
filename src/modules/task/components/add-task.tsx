@@ -6,28 +6,27 @@ import {
   CardHeader,
   CardTitle,
 } from "@/src/ui/card";
+import { Textarea } from "@/src/ui/textarea";
+import { Input } from "@/src/ui/input";
 
 export function AddTask() {
   return (
-    <Card className="m-4">
+    <Card className="m-4 gap-4">
       <CardHeader>
         <CardTitle className="text-xl">Add New Task</CardTitle>
       </CardHeader>
       <CardContent>
         <form className="flex">
-          <input
+          <Input
             type="text"
             placeholder="Task Name"
-            className="mx-2 bg-gray-100"
+            className="mx-2"
           />
         </form>
-        <form className="flex">
-          <input
-            type="text"
-            placeholder="Task Description"
-            className="m-2 bg-gray-100"
-          />
-        </form>
+        <Textarea
+          className="ml-2 mt-2 size-120"
+          placeholder="Task Description"
+        ></Textarea>
       </CardContent>
       <CardAction>
         <Button className="mx-8">Add Task</Button>
