@@ -17,11 +17,7 @@ export function AddTask() {
       </CardHeader>
       <CardContent>
         <form className="flex">
-          <Input
-            type="text"
-            placeholder="Task Name"
-            className="mx-2"
-          />
+          <Input type="text" placeholder="Task Name" className="mx-2" />
         </form>
         <Textarea
           className="ml-2 mt-2 size-120 h-24"
