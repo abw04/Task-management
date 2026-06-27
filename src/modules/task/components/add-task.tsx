@@ -24,7 +24,7 @@ export function AddTask() {
           />
         </form>
         <Textarea
-          className="ml-2 mt-2 size-120"
+          className="ml-2 mt-2 size-120 h-24"
           placeholder="Task Description"
         ></Textarea>
       </CardContent>
