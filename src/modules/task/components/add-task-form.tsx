@@ -22,7 +22,7 @@ export function AddTaskForm() {
             <Label>Title</Label>
             <Input type="text" placeholder="Task Title" className="mx-2" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 my-2">
             <Label>Description</Label>
             <Textarea
               className="ml-2 mt-2 size-120 h-24"
