@@ -1,10 +1,10 @@
-import type { Task } from "../task.type";
-import { TaskCheck } from "./task-check";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/src/ui/card";
+import type { Task } from "@/modules/task/task.type";
+import { TaskCheck } from "@/modules/task/components/task-check";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export function TaskCard({ task }: { task: Task }) {
   return (
-    <div className="p-2 m-2">
+    <div className="px-4 py-1">
       <Card size="sm">
         <CardHeader>
           <CardTitle className="flex gap-2">

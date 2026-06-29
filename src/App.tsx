@@ -1,15 +1,15 @@
-import { AddTask } from "./modules/task/components/add-task";
-import { TaskCard } from "./modules/task/components/task-card";
-import { tasksData } from "./modules/task/task.data";
+import { AddTaskForm } from "@/modules/task/components/add-task-form";
+import { TaskCard } from "@/modules/task/components/task-card";
+import { tasksData } from "@/modules/task/task.data";
 
 export default function App() {
   return (
-    <div className="max-w-xl mx-auto bg-[oklch(0.45_0.085_224.283)] min-h-screen">
-      <h1 className="text-3xl mx-2 pt-4 text-center font-bold font-heading text-[oklch(0.984_0.019_200.873)]">
+    <div className="max-w-xl mx-auto bg-cyan-600 min-h-screen">
+      <h1 className="text-3xl mx-2 pt-4 text-center font-bold font-heading text-cyan-50">
         Task Management
       </h1>
       <div>
-        <AddTask />
+        <AddTaskForm />
       </div>
       {tasksData.map((task) => {
         return <TaskCard key={task.id} task={task} />;
