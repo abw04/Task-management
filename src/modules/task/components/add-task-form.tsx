@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -9,6 +8,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AddButton } from "@/modules/task/components/add-button";
 
 export function AddTaskForm() {
   return (
@@ -30,7 +30,7 @@ export function AddTaskForm() {
             ></Textarea>
           </div>
           <CardAction>
-            <Button>Add Task</Button>
+            <AddButton />
           </CardAction>
         </CardContent>
       </Card>
