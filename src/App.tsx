@@ -7,12 +7,15 @@ import type { Task } from "./modules/task/task.type";
 export default function App() {
   const [tasks, setTasks] =useState<Task[]>(tasksData)
 
-  // function addTask(id:number) {
-  //   const newTask = {
-  //     id: tasksData.length > 0 ?
-  //   }
-  //   setTasks({...tasks, newTask})
-  // }
+  function addTask(title:string, description:string) {
+    const newTask:Task = {
+      id: tasksData.length > 0 ? tasksData[tasksData.length-1].id + 1:1,
+      title: title,
+      description: description,
+      isCompleted: false
+    }
+    setTasks([...tasks, newTask])
+  }
 
   function deleteTask(id:number) {
         setTasks(tasks.filter((task) => task.id !== id));
@@ -24,7 +27,7 @@ export default function App() {
         Task Management
       </h1>
       <div>
-        <AddTaskForm />
+        <AddTaskForm onAdd={addTask}/>
       </div>
       {tasks.map((task) => {
         return <TaskCard key={task.id} task={task} onDelete={deleteTask} />;
