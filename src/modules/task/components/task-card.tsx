@@ -8,8 +8,17 @@ import {
   CardAction,
 } from "@/components/ui/card";
 import { DelButton } from "./del-button";
+import { EditButton } from "./edit-button";
 
-export function TaskCard({ task,onDelete }: { task: Task, onDelete: (id: number) => void} ){
+export function TaskCard({
+  task,
+  onDelete,
+  // onEdit
+}: {
+  task: Task;
+  onDelete: (id: number) => void;
+  // onEdit: (targetId:number, title:string, description:string, isCompleted:boolean) => Task
+}) {
   return (
     <div className="px-4 py-1">
       <Card size="sm">
@@ -21,8 +30,11 @@ export function TaskCard({ task,onDelete }: { task: Task, onDelete: (id: number)
           <CardDescription className="mx-4">
             <span>{task.description}</span>
           </CardDescription>
-          <CardAction>
-            <DelButton id ={task.id} onDelete = {onDelete} />
+          <CardAction className="flex">
+            {<EditButton 
+            // id ={task.id} onClick={onEdit} 
+            />}
+            <DelButton id={task.id} onClick={onDelete} />
           </CardAction>
         </CardHeader>
       </Card>

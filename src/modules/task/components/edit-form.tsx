@@ -11,31 +11,31 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-export function AddTaskForm({
-  onAdd,
+export function EditTaskForm({
+  onEdit,
 }: {
-  onAdd: (title: string, description: string) => void;
+  onEdit: (title: string, description: string) => void;
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  function handleAdd(e: React.SubmitEvent) {
+  function handleEdit(e: React.SubmitEvent) {
     e.preventDefault();
 
     if (!title.trim() || !description.trim()) {
       return;
     }
 
-    onAdd(title, description);
+    onEdit(title, description);
     setTitle("");
     setDescription("");
   }
 
   return (
-    <form className="flex" onSubmit={handleAdd}>
+    <form className="flex" onSubmit={handleEdit}>
       <Card className="m-4 gap-4">
         <CardHeader>
-          <CardTitle className="text-xl">Add New Task</CardTitle>
+          <CardTitle className="text-xl">Edit Task</CardTitle>
         </CardHeader>
         <CardContent className="space-y-1">
           <div className="space-y-2">
@@ -58,7 +58,7 @@ export function AddTaskForm({
             ></Textarea>
           </div>
           <CardAction>
-            <Button>Add Task</Button>
+            <Button> Edit Task </Button>
           </CardAction>
         </CardContent>
       </Card>
