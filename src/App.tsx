@@ -3,35 +3,41 @@ import { TaskCard } from "@/modules/task/components/task-card";
 import { tasksData } from "@/modules/task/task.data";
 import { useState } from "react";
 import type { Task } from "./modules/task/task.type";
-// import { EditTaskForm } from "./modules/task/components/edit-form";
+import { EditTaskForm } from "./modules/task/components/edit-form";
 
 export default function App() {
-  const [tasks, setTasks] =useState<Task[]>(tasksData)
-  // const [editform, setEditForm] =useState(null)
+  const [tasks, setTasks] = useState<Task[]>(tasksData);
+  const [id, setId] = useState<null | number>(null);
 
-  function addTask(title:string, description:string) {
-    const newTask:Task = {
-      id: tasksData.length > 0 ? tasksData[tasksData.length-1].id + 1:1,
+  function addTask(title: string, description: string) {
+    const newTask: Task = {
+      id: tasksData.length > 0 ? tasksData[tasksData.length - 1].id + 1 : 1,
       title: title,
       description: description,
-      isCompleted: false
-    }
-    setTasks([...tasks, newTask])
+      isCompleted: false,
+    };
+    setTasks([...tasks, newTask]);
   }
 
-  function deleteTask(id:number) {
-        setTasks(tasks.filter((task) => task.id !== id));
+  function deleteTask(id: number) {
+    setTasks(tasks.filter((task) => task.id !== id));
   }
 
-  // function editTask(targetId:number, title:string, description:string, isCompleted:boolean) {
-  //   const editedTask:Task = {
-  //     id: targetId,
-  //     title: title,
-  //     description: description,
-  //     isCompleted: isCompleted
-  //   }
-  //   setTasks(tasks.map((task) => task.id === targetId ? editedTask: task));
-  // };
+  function editTask(id: number) {
+    setId(id);
+  }
+
+  const editedTask: Task | undefined = tasks.find((task) => id == task.id);
+
+  function updateTask(title: string, description: string) {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, title: title, description: description };
+      } else return task;
+    });
+    setTasks(updatedTasks);
+    setId(null);
+  }
 
   return (
     <div className="max-w-xl mx-auto bg-cyan-600 min-h-screen">
@@ -39,16 +45,23 @@ export default function App() {
         Task Management
       </h1>
       <div>
-        <AddTaskForm onAdd={addTask}/>
+        <AddTaskForm onAdd={addTask} />
       </div>
       {tasks.map((task) => {
-        return <TaskCard key={task.id} task={task} onDelete={deleteTask} 
-        // onEdit={editTask}
-         />;
+        return (
+          <TaskCard
+            key={task.id}
+            task={task}
+            onDelete={deleteTask}
+            onEdit={editTask}
+          />
+        );
       })}
-      {/* <div>
-        <EditTaskForm />
-      </div> */}
+      {editedTask !== undefined && (
+        <div>
+          <EditTaskForm onEdit={updateTask} task={editedTask} />
+        </div>
+      )}
     </div>
   );
 }

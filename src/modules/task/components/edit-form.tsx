@@ -13,11 +13,18 @@ import { Button } from "@/components/ui/button";
 
 export function EditTaskForm({
   onEdit,
+  task,
 }: {
   onEdit: (title: string, description: string) => void;
+  task: {
+    id: number;
+    title: string;
+    description: string;
+    isCompleted: boolean;
+  };
 }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(task.title);
+  const [description, setDescription] = useState(task.description);
 
   function handleEdit(e: React.SubmitEvent) {
     e.preventDefault();
@@ -27,8 +34,6 @@ export function EditTaskForm({
     }
 
     onEdit(title, description);
-    setTitle("");
-    setDescription("");
   }
 
   return (

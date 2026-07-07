@@ -13,11 +13,11 @@ import { EditButton } from "./edit-button";
 export function TaskCard({
   task,
   onDelete,
-  // onEdit
+  onEdit,
 }: {
   task: Task;
   onDelete: (id: number) => void;
-  // onEdit: (targetId:number, title:string, description:string, isCompleted:boolean) => Task
+  onEdit: (id: number) => void;
 }) {
   return (
     <div className="px-4 py-1">
@@ -31,9 +31,7 @@ export function TaskCard({
             <span>{task.description}</span>
           </CardDescription>
           <CardAction className="flex">
-            {<EditButton 
-            // id ={task.id} onClick={onEdit} 
-            />}
+            {<EditButton id={task.id} onClick={onEdit} />}
             <DelButton id={task.id} onClick={onDelete} />
           </CardAction>
         </CardHeader>
