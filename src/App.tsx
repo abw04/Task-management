@@ -47,6 +47,11 @@ export default function App() {
       <div>
         <AddTaskForm onAdd={addTask} />
       </div>
+      {editedTask !== undefined && (
+        <div>
+          <EditTaskForm onEdit={updateTask} task={editedTask} />
+        </div>
+      )}
       {tasks.map((task) => {
         return (
           <TaskCard
@@ -57,11 +62,6 @@ export default function App() {
           />
         );
       })}
-      {editedTask !== undefined && (
-        <div>
-          <EditTaskForm onEdit={updateTask} task={editedTask} />
-        </div>
-      )}
     </div>
   );
 }
