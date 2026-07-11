@@ -4,16 +4,20 @@ import { tasksData } from "@/modules/task/task.data";
 import { useState } from "react";
 import type { Task } from "./modules/task/task.type";
 import { EditTaskForm } from "./modules/task/components/edit-form";
+// import type { workTask } from "./modules/task/task.type";
+// import { workTasksData } from "@/modules/task/task.data";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>(tasksData);
   const [id, setId] = useState<null | number>(null);
+  // const [workTasks, setWorkTasks] = useState<workTask[]>(workTasksData)
 
-  function addTask(title: string, description: string) {
+  function addTask(title: string, description: string, date: Date) {
     const newTask: Task = {
       id: tasksData.length > 0 ? tasksData[tasksData.length - 1].id + 1 : 1,
       title: title,
       description: description,
+      date: date,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
@@ -62,6 +66,24 @@ export default function App() {
           />
         );
       })}
+      {/* <div>
+        <AddTaskForm onAdd={addTask} />
+      </div>
+      {editedTask !== undefined && (
+        <div>
+          <EditTaskForm onEdit={updateTask} task={editedTask} />
+        </div>
+      )}
+      {workTasks.map((work) => {
+        return (
+          <TaskCard
+            key={work.id}
+            task={work}
+            onDelete={deleteTask}
+            onEdit={editTask}
+          />
+        );
+      })} */}
     </div>
   );
 }

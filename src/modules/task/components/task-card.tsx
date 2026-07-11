@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardDescription,
   CardAction,
+  CardContent,
 } from "@/components/ui/card";
 import { DelButton } from "./del-button";
 import { EditButton } from "./edit-button";
@@ -30,6 +31,9 @@ export function TaskCard({
           <CardDescription className="mx-4">
             <span>{task.description}</span>
           </CardDescription>
+          <CardContent>
+            <span>{task.date.toLocaleDateString()}</span>
+            </CardContent>
           <CardAction className="flex">
             {<EditButton id={task.id} onClick={onEdit} />}
             <DelButton id={task.id} onClick={onDelete} />
