@@ -10,9 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {format} from "date-fns"
+import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Field, FieldLabel } from "@/components/ui/field";
 
 export function AddTaskForm({
@@ -22,7 +26,7 @@ export function AddTaskForm({
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] =useState<Date>()
+  const [date, setDate] = useState<Date>();
 
   function handleAdd(e: React.SubmitEvent) {
     e.preventDefault();
@@ -31,10 +35,10 @@ export function AddTaskForm({
       return;
     }
 
-    onAdd(title, description,date);
+    onAdd(title, description, date);
     setTitle("");
     setDescription("");
-    setDate(undefined)
+    setDate(undefined);
   }
 
   return (
@@ -64,20 +68,28 @@ export function AddTaskForm({
             ></Textarea>
           </div>
           <div>
-             <Field className="mx-auto w-44">
-      <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
-      <Popover>
-        <PopoverTrigger asChild><Button variant="outline" id="date-picker-simple" className="justify-start font-normal">{date ? format(date, "PPP") : <span>Pick date</span>}</Button></PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
-          <Calendar 
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            defaultMonth={date}
-          />
-        </PopoverContent>
-      </Popover>
-    </Field>
+            <Field className="w-44">
+              <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    id="date-picker-simple"
+                    className="justify-start font-normal"
+                  >
+                    {date ? format(date, "PPP") : <span>Pick date</span>}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    defaultMonth={date}
+                  />
+                </PopoverContent>
+              </Popover>
+            </Field>
           </div>
 
           <CardAction>

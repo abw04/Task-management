@@ -33,10 +33,10 @@ export default function App() {
 
   const editedTask: Task | undefined = tasks.find((task) => id == task.id);
 
-  function updateTask(title: string, description: string) {
+  function updateTask(title: string, description: string, date: Date) {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
-        return { ...task, title: title, description: description };
+        return { ...task, title: title, description: description, date: date };
       } else return task;
     });
     setTasks(updatedTasks);
@@ -48,9 +48,11 @@ export default function App() {
       <h1 className="text-3xl mx-2 pt-4 text-center font-bold font-heading text-cyan-50">
         Task Management
       </h1>
+      {editedTask ==undefined &&(
       <div>
         <AddTaskForm onAdd={addTask} />
       </div>
+      )}
       {editedTask !== undefined && (
         <div>
           <EditTaskForm onEdit={updateTask} task={editedTask} />
