@@ -4,20 +4,18 @@ import { tasksData } from "@/modules/task/task.data";
 import { useState } from "react";
 import type { Task } from "./modules/task/task.type";
 import { EditTaskForm } from "./modules/task/components/edit-form";
-// import type { workTask } from "./modules/task/task.type";
-// import { workTasksData } from "@/modules/task/task.data";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>(tasksData);
   const [id, setId] = useState<null | number>(null);
-  // const [workTasks, setWorkTasks] = useState<workTask[]>(workTasksData)
 
-  function addTask(title: string, description: string, date: Date) {
+  function addTask(title: string, description: string, date: Date, category: string) {
     const newTask: Task = {
       id: tasksData.length > 0 ? tasksData[tasksData.length - 1].id + 1 : 1,
       title: title,
       description: description,
       date: date,
+      category: category,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
@@ -58,14 +56,34 @@ export default function App() {
           <EditTaskForm onEdit={updateTask} task={editedTask} />
         </div>
       )}
+        <h1 className="text-2xl mx-2 p-4 font-bold font-heading text-cyan-50">
+        Work Task
+      </h1>
       {tasks.map((task) => {
         return (
+        task.category == "Work" && (
           <TaskCard
             key={task.id}
             task={task}
             onDelete={deleteTask}
             onEdit={editTask}
           />
+          )
+        );
+      })}
+      <h1 className="text-2xl mx-2 p-4 font-bold font-heading text-cyan-50">
+        non-Work Task
+      </h1>
+      {tasks.map((task) => {
+        return (
+        task.category == "non-Work" && (
+          <TaskCard
+            key={task.id}
+            task={task}
+            onDelete={deleteTask}
+            onEdit={editTask}
+          />
+          )
         );
       })}
       {/* <div>

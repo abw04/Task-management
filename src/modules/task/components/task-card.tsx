@@ -33,7 +33,7 @@ export function TaskCard({
           </CardDescription>
           <CardContent>
             <span>{task.date.toLocaleDateString()}</span>
-            </CardContent>
+          </CardContent>
           <CardAction className="flex">
             {<EditButton id={task.id} onClick={onEdit} />}
             <DelButton id={task.id} onClick={onDelete} />

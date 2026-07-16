@@ -75,7 +75,7 @@ export function EditTaskForm({
                     <div>
             <Field className="w-44">
               <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
-              <Popover>
+              <Popover >
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
@@ -85,7 +85,7 @@ export function EditTaskForm({
                     {date ? format(date, "PPP") : <span>Pick date</span>}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="w-auto p-0 " align="start">
                   <Calendar
                     mode="single"
                     selected={date}

@@ -18,15 +18,30 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Field, FieldLabel } from "@/components/ui/field";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function AddTaskForm({
   onAdd,
 }: {
-  onAdd: (title: string, description: string, date: Date) => void;
+  onAdd: (
+    title: string,
+    description: string,
+    date: Date,
+    category: string,
+  ) => void;
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState<Date>();
+  const [category, setCategory] = useState("");
 
   function handleAdd(e: React.SubmitEvent) {
     e.preventDefault();
@@ -35,10 +50,11 @@ export function AddTaskForm({
       return;
     }
 
-    onAdd(title, description, date);
+    onAdd(title, description, date, category);
     setTitle("");
     setDescription("");
     setDate(undefined);
+    setCategory("");
   }
 
   return (
@@ -68,7 +84,7 @@ export function AddTaskForm({
             ></Textarea>
           </div>
           <div>
-            <Field className="w-44">
+            <Field className="gap-1 w-44">
               <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
               <Popover>
                 <PopoverTrigger asChild>
@@ -91,7 +107,21 @@ export function AddTaskForm({
               </Popover>
             </Field>
           </div>
-
+          <div className="space-y-2 my-2">
+            <Label>Category</Label>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger>
+                <SelectValue placeholder="Choose Category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup >
+                  <SelectLabel>Category</SelectLabel>
+                  <SelectItem value="Work">Work</SelectItem>
+                  <SelectItem value="non-Work">non-Work</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
           <CardAction>
             <Button>Add Task</Button>
           </CardAction>
